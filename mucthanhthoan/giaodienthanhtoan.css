@@ -1,55 +1,104 @@
 :root {
-    --primary: #004d66;
-    --secondary: #27ae60;
-    --bg: #f4f7f6;
-    --dark: #1a1a1a;
+    --primary-color: #004d61;
+    --secondary-color: #28a745;
+    --bg-light: #f4f7f9;
 }
 
-body { font-family: sans-serif; background: var(--bg); display: flex; justify-content: center; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light);
+}
 
-.container { width: 100%; max-width: 500px; padding: 20px; position: relative; }
+/* --- NAVIGATION --- */
+.main-nav {
+    background: white;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.logo { font-weight: bold; font-size: 24px; text-decoration: none; color: var(--primary-color); }
+.logo span { color: var(--secondary-color); }
+.nav-links { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; }
+.nav-links label, .nav-links a { 
+    text-decoration: none; color: #333; cursor: pointer; font-size: 14px; 
+}
+.admin-btn { border: 1px solid #ccc; padding: 5px 15px; border-radius: 4px; }
 
-/* ẨN CÁC RADIO VÀ SCREEN MẶC ĐỊNH */
+/* --- CẤU TRÚC ĐIỀU KHIỂN --- */
 input[type="radio"] { display: none; }
-.screen { display: none; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.screen { display: none; width: 100%; min-height: 80vh; padding-top: 40px; }
 
-/* ĐIỀU KHIỂN HIỂN THỊ LUỒNG */
-#step1:checked ~ .section-event { display: block; }
-#step2:checked ~ .section-seating { display: block; }
-#step3:checked ~ .section-billing { display: block; }
-#step4:checked ~ .section-success { display: block; }
+/* HIỂN THỊ CÁC LUỒNG */
+#step1:checked ~ .section-event { display: block; } /* Luồng 1 để mặc định */
+#step2:checked ~ .section-seating { display: flex; }
+#step3:checked ~ .section-billing { display: flex; }
+#step4:checked ~ .section-success { display: flex; }
 
-/* CSS LUỒNG 1: CARD SỰ KIỆN */
-.card { display: block; border: 2px solid #eee; padding: 15px; margin-bottom: 10px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-.card:hover { border-color: var(--secondary); }
-.btn { display: inline-block; background: var(--secondary); color: white; padding: 10px 20px; border-radius: 5px; text-align: center; cursor: pointer; }
+/* --- CĂN GIỮA CHO LUỒNG 2, 3, 4 --- */
+.section-center {
+    justify-content: center; /* Căn giữa ngang */
+    align-items: flex-start; /* Đẩy lên phía trên một chút cho đẹp */
+}
 
-/* CSS LUỒNG 2: SƠ ĐỒ GHẾ */
-.seating-map { background: #eee; padding: 20px; text-align: center; margin: 20px 0; border-radius: 8px; }
-.screen-bar { height: 5px; background: #999; margin-bottom: 20px; }
-.seats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.seat { width: 30px; height: 30px; background: #ccc; border-radius: 5px; cursor: pointer; margin: auto; }
+/* --- FORM ĐĂNG KÝ (Dựa theo ảnh bạn gửi) --- */
+.form-container {
+    background: white;
+    width: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.form-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+.form-body { padding: 20px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-weight: bold; font-size: 12px; margin-bottom: 5px; }
+.field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dce4ec;
+    background: #ebf2fa;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.field small { color: var(--secondary-color); font-size: 11px; }
+
+.btn-confirm {
+    display: block;
+    background: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* --- SƠ ĐỒ GHẾ --- */
+.content-box { background: white; padding: 30px; border-radius: 10px; text-align: center; }
+.seating-map { margin: 20px 0; background: #f9f9f9; padding: 20px; border-radius: 10px; }
+.seats { display: grid; grid-template-columns: repeat(4, 30px); gap: 10px; justify-content: center; }
+.seat { width: 30px; height: 30px; background: #ddd; border-radius: 4px; cursor: pointer; }
 .seat.occupied { background: #555; cursor: not-allowed; }
-.seat.vip { background: #f1c40f; }
-.seat.standard { background: #3498db; }
+input[type="checkbox"]:checked + .seat { background: var(--secondary-color); }
 
-/* Khi click vào chỗ ngồi */
-input[type="checkbox"] { display: none; }
-input[type="checkbox"]:checked + .seat { background: var(--secondary); transform: scale(1.1); }
-
-/* CSS LUỒNG 3: FORM (Theo ảnh) */
-.form-header { background: var(--primary); color: white; padding: 15px; text-align: center; border-radius: 8px 8px 0 0; }
-.field { margin: 15px 0; }
-.field label { display: block; font-weight: bold; font-size: 0.8em; margin-bottom: 5px; }
-.field input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background: #e8f0fe; box-sizing: border-box; }
-.valid { color: var(--secondary); font-size: 0.8em; }
-
-/* CSS LUỒNG 4: THÀNH CÔNG */
-.success-card { text-align: center; }
-.check-icon { width: 60px; height: 60px; background: var(--secondary); color: white; font-size: 30px; line-height: 60px; border-radius: 50%; margin: 0 auto 20px; }
-.info-table { text-align: left; background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-.row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #eee; }
-
-/* NAVIGATION */
-.nav-btns { display: flex; justify-content: space-between; margin-top: 20px; }
-.btn-secondary { color: #666; cursor: pointer; line-height: 40px; }
+/* --- GIAO DIỆN THÀNH CÔNG --- */
+.success-box { text-align: center; background: white; padding: 50px; border-radius: 10px; }
+.icon-check { width: 60px; height: 60px; background: var(--secondary-color); color: white; border-radius: 50%; line-height: 60px; font-size: 30px; margin: 0 auto 20px; }
