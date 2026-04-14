@@ -61,9 +61,8 @@ article img + p:first-letter { font-family: EucrosiaUPC, sans-serif;
     text-transform: uppercase; 
     font-size: 14px;           
     display: inline-block;     
-    cursor: pointer;           
-}
-.content {flex-grow: 1;}
+    cursor: pointer}
+
 
 footer {
     margin: 0;
