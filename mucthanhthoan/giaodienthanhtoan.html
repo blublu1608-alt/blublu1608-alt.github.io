@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hệ thống Đặt vé Sự kiện</title>
+    <link rel="stylesheet" href="giaodienthanhtoan.css">
+</head>
+<body>
+
+<div class="container">
+    <input type="radio" name="flow" id="step1" checked>
+    <input type="radio" name="flow" id="step2">
+    <input type="radio" name="flow" id="step3">
+    <input type="radio" name="flow" id="step4">
+
+    <section class="screen section-event">
+        <h2>Bước 1: Chọn Sự Kiện</h2>
+        <div class="card-grid">
+            <label for="step2" class="card">
+                <h3>Summit Công Nghệ 2026</h3>
+                <p>Hà Nội - 15/05/2026</p>
+                <span class="btn">Chọn sự kiện</span>
+            </label>
+            <label for="step2" class="card">
+                <h3>Music Festival: Summer Blast</h3>
+                <p>TP.HCM - 20/06/2026</p>
+                <span class="btn">Chọn sự kiện</span>
+            </label>
+        </div>
+    </section>
+
+    <section class="screen section-seating">
+        <h2>Bước 2: Chọn Hạng Vé & Chỗ Ngồi</h2>
+        <div class="ticket-types">
+            <span class="badge vvip">VVIP (Hết)</span>
+            <span class="badge vip">VIP (Còn chỗ)</span>
+            <span class="badge standard">Standard (Còn chỗ)</span>
+        </div>
+
+        <div class="seating-map">
+            <p>Sân Khấu / Stage</p>
+            <div class="screen-bar"></div>
+            
+            <div class="seats">
+                <div class="seat occupied"></div>
+                <div class="seat occupied"></div>
+                <input type="checkbox" id="s1"><label for="s1" class="seat vip"></label>
+                <input type="checkbox" id="s2"><label for="s2" class="seat vip"></label>
+                <input type="checkbox" id="s3"><label for="s3" class="seat standard"></label>
+                <input type="checkbox" id="s4"><label for="s4" class="seat standard"></label>
+            </div>
+        </div>
+        
+        <div class="nav-btns">
+            <label for="step1" class="btn-secondary">Quay lại</label>
+            <label for="step3" class="btn">Tiếp tục thanh toán</label>
+        </div>
+    </section>
+
+    <section class="screen section-billing">
+        <div class="form-header">
+            <h3>FORM ĐĂNG KÝ SỰ KIỆN</h3>
+        </div>
+        <div class="form-body">
+            <div class="progress">
+                <div class="prog-item active">✓ Nhập thông tin</div>
+                <div class="prog-item">○ Xác nhận</div>
+            </div>
+
+            <div class="field">
+                <label>HỌ TÊN</label>
+                <input type="text" value="Nguyễn Văn A" readonly>
+                <small class="valid">✓ Tên hợp lệ</small>
+            </div>
+            <div class="field">
+                <label>EMAIL</label>
+                <input type="email" value="vanna@email.com" readonly>
+                <small class="valid">✓ Email hợp lệ</small>
+            </div>
+            <div class="field">
+                <label>SỐ ĐIỆN THOẠI</label>
+                <input type="text" value="090-123-4567" readonly>
+                <small class="valid">✓ Số điện thoại hợp lệ</small>
+            </div>
+        </div>
+        <div class="nav-btns">
+            <label for="step4" class="btn">XÁC NHẬN THANH TOÁN</label>
+        </div>
+    </section>
+
+    <section class="screen section-success">
+        <div class="success-card">
+            <div class="check-icon">✓</div>
+            <h2>ĐĂNG KÝ THÀNH CÔNG!</h2>
+            <p>Thông tin đã được gửi đến email của bạn.</p>
+            <div class="info-table">
+                <div class="row"><span>ID Đăng ký:</span> <strong>REG1001</strong></div>
+                <div class="row"><span>Thời gian:</span> <strong>15:45:00 - 14/04/2026</strong></div>
+            </div>
+            <label for="step1" class="btn">QUAY LẠI SỰ KIỆN</label>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
