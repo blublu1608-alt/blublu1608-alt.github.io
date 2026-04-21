@@ -4,8 +4,6 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     
-    <link rel="stylesheet" href="chiabaluong.css">
-    
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -25,6 +23,46 @@
             }
         }
     </script>
+
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+        /* Import Material Symbols */
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+        /* Tùy chỉnh icon Material */
+        .material-symbols-outlined { 
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; 
+        }
+
+        /* Base Fonts theo chuẩn giao diện Event Hub */
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
+        h1, h2, h3, h4 { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+
+        /* Animation trượt mượt mà cho nút bấm */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .slide-down {
+            animation: slideDown 0.3s ease-out forwards;
+        }
+
+        /* Đổi màu icon khi phương thức được chọn */
+        .payment-method.active .material-symbols-outlined {
+            color: #14b8a6; 
+        }
+    </style>
 </head>
 <body class="bg-surface text-slate-800 min-h-screen">
 
@@ -97,13 +135,14 @@
 
                 <div class="md:col-span-2 flex justify-end mt-4">
                     <button id="btnConfirmStep1" class="hidden bg-orange-500 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-orange-500/30 hover:bg-orange-600 transition-all">
+                        
                         Xác nhận thông tin
                     </button>
                 </div>
             </div>
         </section>
 
-<section id="step2" class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 opacity-50 pointer-events-none transition-all duration-500">
+        <section id="step2" class="bg-white rounded-3xl p-8 lg:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 opacity-50 pointer-events-none transition-all duration-500">
             <div class="flex items-center gap-4 mb-10">
                 <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center">
                     <span class="material-symbols-outlined text-slate-400">payments</span>
@@ -140,7 +179,8 @@
                 </div>
             </div>
         </section>
-        
+    </div>
+
     <aside class="lg:col-span-4">
         <div class="sticky top-32 space-y-6">
             <div class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
@@ -196,7 +236,130 @@
     </aside>
 </main>
 
-<script src="chiabaluong.js"></script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // ==========================================
+        // 1. KHAI BÁO BIẾN (Đã bổ sung đầy đủ)
+        // ==========================================
+        const inputName = document.getElementById('fullName');
+        const inputPhone = document.getElementById('phone');
+        const inputEmail = document.getElementById('email');
+        
+        const errorName = document.getElementById('nameError');
+        const errorPhone = document.getElementById('phoneError');
+        const errorEmail = document.getElementById('emailError');
+        
+        const btnConfirm = document.getElementById('btnConfirmStep1');
+        const step2Section = document.getElementById('step2');
+
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const btnNextStep2 = document.getElementById('btnNextStep2'); // Đã thêm biến này
+        
+        let selectedPaymentMethod = null; // Đã thêm biến lưu trạng thái thanh toán
+
+        // Đã thêm Regex để validate
+        const nameRegex = /^[a-zA-ZÀ-ỹ\s]+$/; 
+        const phoneRegex = /^\d{10}$/; 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+
+        // ==========================================
+        // 2. LOGIC BƯỚC 1: VALIDATE THÔNG TIN (Giữ nguyên)
+        // ==========================================
+        const validateForm = () => {
+            const nameVal = inputName.value.trim();
+            const phoneVal = inputPhone.value.trim();
+            const emailVal = inputEmail.value.trim();
+
+            let isNameValid = nameRegex.test(nameVal);
+            let isPhoneValid = phoneRegex.test(phoneVal);
+            let isEmailValid = emailRegex.test(emailVal);
+
+            nameVal === '' || isNameValid ? errorName.classList.add('hidden') : errorName.classList.remove('hidden');
+            phoneVal === '' || isPhoneValid ? errorPhone.classList.add('hidden') : errorPhone.classList.remove('hidden');
+            emailVal === '' || isEmailValid ? errorEmail.classList.add('hidden') : errorEmail.classList.remove('hidden');
+
+            if (isNameValid && isPhoneValid && isEmailValid) {
+                btnConfirm.classList.remove('hidden');
+            } else {
+                btnConfirm.classList.add('hidden');
+            }
+        };
+
+        inputName.addEventListener('input', validateForm);
+        inputPhone.addEventListener('input', validateForm);
+        inputEmail.addEventListener('input', validateForm);
+
+        btnConfirm.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Mở khóa Bước 2
+            step2Section.classList.remove('opacity-50', 'pointer-events-none');
+            step2Section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            btnConfirm.innerHTML = 'Đã xác nhận <span class="material-symbols-outlined text-sm align-middle ml-1">check_circle</span>';
+            btnConfirm.classList.replace('bg-orange-500', 'bg-teal-600');
+            btnConfirm.classList.replace('hover:bg-orange-600', 'hover:bg-teal-700');
+            btnConfirm.classList.replace('shadow-orange-500/30', 'shadow-teal-500/30');
+            btnConfirm.classList.add('pointer-events-none');
+        });
+
+        // ==========================================
+        // 3. LOGIC BƯỚC 2: CHỌN PHƯƠNG THỨC THANH TOÁN
+        // ==========================================
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                // Xóa class active ở tất cả các ô
+                paymentMethods.forEach(m => {
+                    m.classList.remove('border-teal-500', 'bg-teal-50', 'ring-2', 'ring-teal-500/20', 'active');
+                    m.classList.add('border-slate-200');
+                });
+
+                // Thêm class active cho ô vừa click
+                method.classList.remove('border-slate-200');
+                method.classList.add('border-teal-500', 'bg-teal-50', 'ring-2', 'ring-teal-500/20', 'active');
+
+                // Lưu giá trị đã chọn
+                selectedPaymentMethod = method.id;
+
+                // Hiển thị nút "Tiếp theo"
+                btnNextStep2.classList.remove('hidden');
+            });
+        });
+
+        // ==========================================
+        // 4. CHUYỂN TRANG SANG PAYMENT.HTML (Gộp code chuẩn)
+        // ==========================================
+        btnNextStep2.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (selectedPaymentMethod) {
+                // Đổi UI sang trạng thái Đang xử lý
+                btnNextStep2.innerHTML = 'Đang chuyển hướng <span class="material-symbols-outlined animate-spin text-lg ml-2">sync</span>';
+                btnNextStep2.classList.add('pointer-events-none', 'opacity-80');
+
+                // Lưu thông tin vào bộ nhớ ngầm
+                const orderInfo = {
+                    orderId: 'EH-' + Math.floor(1000 + Math.random() * 9000),
+                    eventName: 'Summit Công Nghệ 2024',
+                    location: 'Trung tâm hội nghị quốc gia',
+                    ticketClass: 'VIP Zone A',
+                    quantity: '02 vé',
+                    seats: 'Row G, Seat 12-13',
+                    totalAmount: 4900000, 
+                    totalDisplay: '4.900.000đ',
+                    paymentMethod: selectedPaymentMethod 
+                };
+
+                localStorage.setItem('eventHubOrder', JSON.stringify(orderInfo));
+
+                // Nhảy sang Màn 2
+                setTimeout(() => {
+                    window.location.href = 'payment.html';
+                }, 800);
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
