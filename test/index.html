@@ -71,6 +71,7 @@
         <div class="flex items-center gap-3 text-white">
             <span class="material-symbols-outlined text-teal-500 text-3xl" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
             <div class="text-2xl font-black tracking-wider">AURATIX
+                \
             </div>
         </div>
         <a class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors" href="#">
@@ -352,8 +353,6 @@
                 };
 
                 localStorage.setItem('eventHubOrder', JSON.stringify(orderInfo));
-
-                // Nhảy sang Màn 2
                 setTimeout(() => {
                     window.location.href = 'payment.html';
                 }, 800);
@@ -361,6 +360,5 @@
         });
     });
 </script>
-
 </body>
 </html>
