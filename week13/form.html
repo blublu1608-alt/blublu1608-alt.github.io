@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .form-container {
+            width: 650px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #8B0000; 
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #a0a0a0;
+            margin: 15px 0;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .form-row.align-top {
+            align-items: flex-start;
+        }
+
+        .label {
+            width: 150px;
+            color: #2b659b;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="password"], select {
+            border: 1px solid #a9a9a9;
+            padding: 3px 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 200px;
+        }
+
+        .input-short {
+            width: 50px !important;
+        }
+
+        .input-medium {
+            width: 80px !important;
+        }
+
+        .note {
+            color: #2b659b;
+            margin-left: 5px;
+        }
+
+        .inline-label {
+            color: #2b659b;
+            margin: 0 10px 0 20px;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 200px 250px; 
+            gap: 8px 10px;
+            margin-left: 150px; 
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            color: #2b659b;
+        }
+
+        .checkbox-item input {
+            margin-right: 8px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-register {
+            background: linear-gradient(to bottom, #d02020, #8A0000);
+            border: 2px solid #5a0000;
+            border-radius: 20px; /* Tạo hình viên thuốc */
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 6px 25px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Hiệu ứng đổ bóng 3D */
+            text-transform: uppercase;
+        }
+
+        .btn-register:hover {
+            background: linear-gradient(to bottom, #e03030, #9A0000);
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>REGISTRATION</h2>
+    <hr>
+
+    <div class="form-row">
+        <div class="label">Username:</div>
+        <input type="text" name="username">
+    </div>
+    <div class="form-row">
+        <div class="label">Password:</div>
+        <input type="password" name="password">
+    </div>
+    <div class="form-row">
+        <div class="label">Re-type<br>Password:</div>
+        <input type="password" name="re_password">
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+        <div class="label">Birthday:</div>
+        <select name="month">
+            <option>[select one]</option>
+            <option value="1">Jan</option>
+            <option value="2">Feb</option>
+            </select>
+        &nbsp;,&nbsp;
+        <input type="text" class="input-short" name="day">
+        &nbsp;,&nbsp;
+        <input type="text" class="input-medium" name="year">
+        <span class="note">(Month Day, Year)</span>
+    </div>
+    <div class="form-row">
+        <div class="label">Images:</div>
+        <input type="file" name="profile_image">
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+        <div class="label">First Name:</div>
+        <input type="text" name="first_name" style="width: 120px;">
+        <div class="inline-label">Last Name:</div>
+        <input type="text" name="last_name" style="width: 140px;">
+    </div>
+
+    <hr>
+
+    <div class="form-row align-top">
+        <div class="label" style="position: absolute;">Interests (optional):</div>
+    </div>
+    <div class="checkbox-grid">
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="entertainment"> Entertainment</label>
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="business"> Business</label>
+        
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="home"> Home & Family</label>
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="tech"> Computers & Technology</label>
+        
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="health"> Health</label>
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="finance"> Personal Finance</label>
+        
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="music"> Music</label>
+        <label class="checkbox-item"><input type="checkbox" name="interest" value="small_biz"> Small Business</label>
+    </div>
+
+    <hr>
+
+    <div class="btn-container">
+        <button type="submit" class="btn-register">Register</button>
+    </div>
+</div>
+
+</body>
+</html>
