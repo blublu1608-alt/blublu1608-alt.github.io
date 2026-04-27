@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Multiplication Table</title>
+    <style>
+        /* Định dạng khung hiển thị kết quả giống trong ảnh */
+        #result_box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: fit-content;
+            margin-top: 20px;
+            min-width: 200px;
+            min-height: 50px;
+        }
+        .error {
+            color: red;
+        }
+        h2 { text-align: center; }
+        .container { text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>MULTIPLICATION TABLE</h2>
+        
+        <p>
+            Which multiplication table that you want to display? 
+            <input type="text" id="num_input" onkeyup="displayTable()">
+        </p>
+
+        <center>
+            <div id="result_box">
+                </div>
+        </center>
+    </div>
+
+    <script>
+        function displayTable() {
+            var val = document.getElementById("num_input").value;
+            var resBox = document.getElementById("result_box");
+            
+            // Xóa trắng kết quả cũ mỗi khi nhập mới
+            resBox.innerHTML = "";
+
+            // Nếu ô nhập rỗng, không làm gì cả
+            if (val === "") return;
+
+            // Kiểm tra nếu không phải là số
+            if (isNaN(val)) {
+                resBox.innerHTML = "<span class='error'>You must enter a number</span>";
+            } 
+            else {
+                // Nếu là số, bắt đầu tạo bảng
+                var n = parseFloat(val);
+                var content = "<b>Multiplication table " + n + ":</b><br>";
+                
+                for (var i = 1; i <= 10; i++) {
+                    content += n + " x " + i + " = " + (n * i) + "<br>";
+                }
+                resBox.innerHTML = content;
+            }
+        }
+    </script>
+
+</body>
+</html>
