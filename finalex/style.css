@@ -1,0 +1,139 @@
+/* --- Reset cơ bản --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* 1. Định dạng thanh điều hướng (Menu) */
+#mainNav {
+    background-color: #333;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+#mainNav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#mainNav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#mainNav ul li a:hover {
+    color: #4CAF50; /* Màu xanh lá khi hover */
+}
+
+#toggleMenuBtn {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* 2. Định dạng bảng và tiêu đề */
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#componentTable {
+    width: 80%;
+    margin: 0 auto 15px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#componentTable th, #componentTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#componentTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#componentTable tbody tr:hover {
+    background-color: #f5f5f5; /* Hiệu ứng hover cho hàng */
+}
+
+/* Lớp phụ để đổi màu chữ bảng sang đỏ */
+.red-text {
+    color: red !important;
+}
+
+/* 3. Nút điều khiển bảng */
+.table-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.table-controls button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* 4. Định dạng biểu mẫu liên hệ */
+#contactForm {
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#contactForm button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#contactForm button[type="submit"]:hover {
+    background-color: #45a049;
+}

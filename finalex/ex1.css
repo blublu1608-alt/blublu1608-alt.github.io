@@ -1,0 +1,99 @@
+/* --- Reset & Base Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
+  
+  /* Flexbox Layout: Căn giữa form theo hai chiều ngang và dọc */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-wrapper {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Flexbox Layout: Sắp xếp các thành phần trong form theo cột */
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registration-form h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  border-color: #007bff;
+}
+
+.form-group input[type="file"] {
+  font-size: 14px;
+  color: #555;
+}
+
+.submit-btn {
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* --- Style màu sắc cho thanh đo độ mạnh mật khẩu --- */
+.strength-meter {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.strength-meter strong.none { color: #888; }
+.strength-meter strong.weak { color: #dc3545; }
+.strength-meter strong.medium { color: #ffc107; }
+.strength-meter strong.strong { color: #28a745; }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration Form</title>
+  <link rel="stylesheet" href="ex1.css">
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <form id="registrationForm" class="registration-form">
+      <h2>Register Account</h2>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" minlength="5" maxlength="15" required placeholder="5-15 characters">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required 
+               pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+" 
+               title="Password must contain at least one letter and one number" 
+               placeholder="Letters and numbers">
+        
+        <div class="strength-meter">
+          <span id="strengthText">Strength: <strong class="none">None</strong></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="profilePic">Profile Picture</label>
+        <input type="file" id="profilePic" name="profilePic" accept=".jpg, .jpeg, .png" required>
+      </div>
+
+      <button type="submit" class="submit-btn">Register</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn tập ISV2017</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Sách ©</a></li>
+            <li><a href="#">Tác giả ™</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <button id="toggleMenuBtn">Ẩn/Hiện Menu</button>
+
+    <h3>Bảng linh kiện máy tính ©</h3>
+    <table id="componentTable">
+        <thead>
+            <tr>
+                <th>Tên linh kiện</th>
+                <th>Giá (VND)</th>
+                <th>Đánh giá ★</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>CPU Intel Core i5</td>
+                <td class="price" data-price="5000000">5.000.000</td>
+                <td>4.5★</td>
+            </tr>
+            <tr>
+                <td>RAM DDR4 8GB</td>
+                <td class="price" data-price="800000">800.000</td>
+                <td>4.0★</td>
+            </tr>
+            <tr>
+                <td>SSD 256GB</td>
+                <td class="price" data-price="1200000">1.200.000</td>
+                <td>4.8★</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="table-controls">
+        <button id="changeColorBtn">Đổi màu chữ</button>
+        <button id="sortPriceBtn">Sắp xếp theo giá</button>
+    </div>
+
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Họ tên:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="message">Tin nhắn:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit">Gửi</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
